@@ -1,0 +1,22 @@
+﻿@model KunskapskollMVCLabb.Models.AdressBok
+
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "edit"
+    };
+}
+<h2>Edit</h2>
+@using (Ajax.BeginForm("Edit", ajaxOptions))
+{
+   
+    @Html.EditorFor(x => x.Name)
+    @Html.EditorFor(x => x.Adress)
+    @Html.EditorFor(x => x.PhoneNumber)
+    <input type="submit" value="Edit" />
+}
+<div id="edit">
+    @{Html.RenderAction("ListaAlla");}
+</div>

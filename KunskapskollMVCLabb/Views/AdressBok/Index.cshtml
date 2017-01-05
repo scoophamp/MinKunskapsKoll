@@ -1,0 +1,42 @@
+﻿@model KunskapskollMVCLabb.Models.AdressBok
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "result"
+    };
+    
+}
+
+<h2>AdressBoken</h2>
+
+   @using (Ajax.BeginForm("Create", ajaxOptions))
+   {
+    <div>
+        @Html.LabelFor(adress => adress.Name)
+        @Html.TextBoxFor(adress => adress.Name)
+    </div>
+    <div>
+        @Html.LabelFor(adress => adress.Adress)
+        @Html.TextBoxFor(adress => adress.Adress)
+    </div>
+    <div>
+        @Html.LabelFor(adress => adress.PhoneNumber)
+        @Html.TextBoxFor(adress => adress.PhoneNumber)
+    </div>
+    <input type="submit" value="Lägg till" />
+   }
+
+
+
+<div id="result">
+    @{Html.RenderAction("ListaAlla");}
+</div>
+
+
